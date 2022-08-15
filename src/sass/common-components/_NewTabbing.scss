@@ -1,0 +1,45 @@
+.tabbing{
+    .react-tabs{
+        .react-tabs__tab-list{
+            &::-webkit-scrollbar {
+                width: 0;
+            }
+            display: flex;
+            overflow-x: scroll;
+            border-bottom: 0;
+            margin-bottom: 40px;
+            .react-tabs__tab{
+                margin-bottom: 4px;
+                flex: 1 1;
+                text-align: center;
+                border: 1px solid $skyblue-color;
+                padding: 20px;
+                font-size: 20px;
+                min-width: 180px;
+                text-transform: uppercase;
+                font-family: $heading-font;
+                letter-spacing: 0.70px;
+                &:hover{
+                    border-radius: 0;
+                    background-color: $skyblue-color;
+                    border-color: $skyblue-color;
+                    color: $white-color;
+                }
+                @media only screen and (max-width: 991px) {
+                    padding: 15px;
+                }
+                @media only screen and (max-width: 640px) {
+                    padding: 10px;
+                    font-size: 17px;
+                }
+            }
+            .react-tabs__tab--selected{
+                border-radius: 0;
+                background-color: $skyblue-color;
+                border-color: $skyblue-color;
+                color: $white-color;
+            }
+        }
+    }
+} 
+// .react-tabs__tab--selected

@@ -1,10 +1,7 @@
+import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
+import 'react-tabs/style/react-tabs.css';
 import * as React from 'react';
 import Section_heading from './Section_heading';
-import PropTypes from 'prop-types';
-import Tabs from '@mui/material/Tabs';
-import Tab from '@mui/material/Tab';
-import Typography from '@mui/material/Typography';
-import Box from '@mui/material/Box';
 import WorkspacePremiumIcon from '@mui/icons-material/WorkspacePremium';
 import WorkIcon from '@mui/icons-material/Work';
 import ExtensionIcon from '@mui/icons-material/Extension';
@@ -21,83 +18,30 @@ import KeyboardDoubleArrowDownIcon from '@mui/icons-material/KeyboardDoubleArrow
 import $ from 'jquery';
 
 
-function TabPanel(props) {
-  const { children, value, index, ...other } = props;
-
-
-
-  return (
-    <div
-      role="tabpanel"
-      hidden={value !== index}
-      id={`vertical-tabpanel-${index}`}
-      aria-labelledby={`vertical-tab-${index}`}
-      {...other}
-    >
-      {value === index && (
-        <Box sx={{ p: 3 }}>
-          <Typography>{children}</Typography>
-        </Box>
-      )}
-    </div>
-  );
-}
-
-TabPanel.propTypes = {
-  children: PropTypes.node,
-  index: PropTypes.number.isRequired,
-  value: PropTypes.number.isRequired,
-};
-
-function a11yProps(index) {
-  return {
-    id: `vertical-tab-${index}`,
-    'aria-controls': `vertical-tabpanel-${index}`,
-  };
-}
-
-export default function VerticalTabs() {
-  const [value, setValue] = React.useState(0);
-
-  const handleChange = (event, newValue) => {
-    setValue(newValue);
-  };
-
-  return (
-    <section className='tabbing bg-white gp'>
+function NewTabbing() {
+    return (
+        <>
+        <section className='tabbing bg-white gp'>
       <div className='container'>
-        <Section_heading
+      <Section_heading
           heading='My Resume'
           subHeading='My Details'
         />
 
+      <Tabs>
+    <TabList>
+      <Tab>Experiences</Tab>
+      <Tab>Education</Tab>
+      <Tab>Awards</Tab>
+      <Tab>Certificates</Tab>
+      <Tab>Extensions</Tab>
+      <Tab>Languages</Tab>
+      <Tab>Interests</Tab>      
+    </TabList>
 
-
-
-        <Box
-          sx={{ flexGrow: 1, bgcolor: 'background.paper', display: 'flex', height: 224 }}
-        >
-          <Tabs
-            orientation="vertical"
-            variant="scrollable"
-            value={value}
-            onChange={handleChange}
-            aria-label="Vertical tabs example"
-            sx={{ borderRight: 1, borderColor: 'divider' }}
-          >
-            <Tab label="Experiences" {...a11yProps(0)} />
-            <Tab label="Education" {...a11yProps(1)} />
-            <Tab label="Awards" {...a11yProps(2)} />
-            <Tab label="Certificates" {...a11yProps(3)} />
-            <Tab label="Extensions" {...a11yProps(4)} />
-            <Tab label="Languages" {...a11yProps(5)} />
-            <Tab label="Interests" {...a11yProps(6)} />
-          </Tabs>
-          <div class="bounce">
-            <KeyboardDoubleArrowDownIcon></KeyboardDoubleArrowDownIcon>
-          </div>
-          <TabPanel value={value} index={0}>
-            <section className='tab-width'>
+    <TabPanel>
+      
+      <section className='tab-width'>
               <div className='tab-title '>
                 <h3 className='d-flex align-item-center'> <WorkIcon></WorkIcon>     Experiences </h3>
               </div>
@@ -194,9 +138,10 @@ export default function VerticalTabs() {
                 </div>
               </div>
             </section>
-          </TabPanel>
-          <TabPanel value={value} index={1}>
-            <section className='tab-width'>
+    </TabPanel>
+    <TabPanel>
+    
+      <section className='tab-width'>
               <div className='tab-title '>
                 <h3 className='d-flex align-item-center'><svg fill="#61dafb" width="40px" height="40px" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M3.33 8L10 12l10-6-10-6L0 6h10v2H3.33zM0 8v8l2-2.22V9.2L0 8zm10 12l-5-3-2-1.2v-6l7 4.2 7-4.2v6L10 20z" /></svg>    Education </h3>
               </div>
@@ -244,9 +189,10 @@ export default function VerticalTabs() {
               </div>
 
             </section>
-          </TabPanel>
-          <TabPanel value={value} index={2}>
-            <section className='tab-width'>
+    </TabPanel>
+    <TabPanel>
+      
+      <section className='tab-width'>
               <div className='tab-title '>
                 <h3 className='d-flex align-item-center'><WorkspacePremiumIcon></WorkspacePremiumIcon>   Awards</h3>
               </div>
@@ -265,9 +211,10 @@ export default function VerticalTabs() {
                 </div>
               </div>
             </section>
-          </TabPanel>
-          <TabPanel value={value} index={3}>
-            <section className='tab-width'>
+    </TabPanel>
+    <TabPanel>
+      
+      <section className='tab-width'>
               <div className='tab-title '>
                 <h3 className='d-flex align-item-center'><svg width="40px" height="40px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                   <path fill-rule="evenodd" clip-rule="evenodd" d="M1 0H2H18H19V1V4.08296C21.8377 4.55904 24 7.027 24 10C24 11.777 23.2275 13.3736 22 14.4722V22V23.8685L20.4453 22.8321L18 21.2019L15.5547 22.8321L14 23.8685V22V20H2H1V19V1V0ZM14 18V14.4722C12.7725 13.3736 12 11.777 12 10C12 7.027 14.1623 4.55904 17 4.08296V2H3V18H14ZM16 15.6586V20.1315L17.4453 19.1679L18 18.7981L18.5547 19.1679L20 20.1315V15.6586C19.3744 15.8797 18.7013 16 18 16C17.2987 16 16.6256 15.8797 16 15.6586ZM18 6C15.7909 6 14 7.79086 14 10C14 12.2091 15.7909 14 18 14C20.2091 14 22 12.2091 22 10C22 7.79086 20.2091 6 18 6ZM11 9.00001H5V7.00001H11V9.00001ZM5 12H10V10H5V12ZM7 15H5V13H7V15ZM5 6.00001H7V4.00001H5V6.00001Z" fill="#61dafb" />
@@ -316,9 +263,10 @@ export default function VerticalTabs() {
                 </div>
               </div>
             </section>
-          </TabPanel>
-          <TabPanel value={value} index={4}>
-            <section className='tab-width'>
+    </TabPanel>
+    <TabPanel>
+    
+      <section className='tab-width'>
               <div className='tab-title '>
                 <h3 className='d-flex align-item-center'> <ExtensionIcon></ExtensionIcon>    Extensions </h3>
               </div>
@@ -403,9 +351,10 @@ export default function VerticalTabs() {
                 </div>
               </div>
             </section>
-          </TabPanel>
-          <TabPanel value={value} index={5}>
-            <section className='tab-width'>
+    </TabPanel>
+    <TabPanel>
+      
+      <section className='tab-width'>
               <div className='tab-title '>
                 <h3 className='d-flex align-item-center'> <LanguageIcon></LanguageIcon>    Languages </h3>
               </div>
@@ -440,9 +389,10 @@ export default function VerticalTabs() {
                 </div>
               </div>
             </section>
-          </TabPanel>
-          <TabPanel value={value} index={6}>
-            <section className='tab-width'>
+    </TabPanel>
+    <TabPanel>
+      
+      <section className='tab-width'>
               <div className='tab-title '>
                 <h3 className='d-flex align-item-center'> <InterestsIcon></InterestsIcon>  Interests </h3>
               </div>
@@ -518,11 +468,12 @@ export default function VerticalTabs() {
                 </div>
               </div>
             </section>
-          </TabPanel>
-
-        </Box>
-
-      </div>
-    </section>
-  );
+    </TabPanel>
+  </Tabs>
+  </div>
+      </section>
+        </>
+    )
 }
+export default NewTabbing;
+

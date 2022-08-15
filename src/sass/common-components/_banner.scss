@@ -53,6 +53,9 @@
                 color: $white-color;
                 font-weight: 300;
                 margin-bottom: 40px;
+                @media only screen and (max-width: 480px) {
+                    margin-bottom: 32px;
+                }
             }
             .typewriter{
 
@@ -103,8 +106,8 @@
         @media only screen and (max-width: 320px) {
             .banner-right{
                 img{
-                    width: 260px;
-                    height: 240px;
+                    width: 280px;
+                    height: 260px;
                 }
             }
         }

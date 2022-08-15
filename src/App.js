@@ -2,7 +2,8 @@ import Header from "./components/layouts/Header";
 import Banner from "./components/common-components/Banner";
 import About from "./components/common-components/About";
 import Footer from "./components/layouts/Footer";
-import Tabbing from './components/common-components/Tabbing';
+// import Tabbing from './components/common-components/Tabbing';
+import NewTabbing from "./components/common-components/NewTabbing";
 import Testimonial from "./components/common-components/Testimonial";
 import Counter from "./components/common-components/Counter";
 import Skills from "./components/common-components/Skills";
@@ -33,7 +34,8 @@ function App() {
       <Header />
       <Banner />
       <About />
-      <Tabbing />
+      {/* <Tabbing /> */}
+      <NewTabbing />
       <HighLights />
       
       <Counter />
